@@ -21,7 +21,7 @@ unsigned char *stringToBin(const char *str, unsigned char *binary_arr, size_t *i
 }
 
 //String to binary, prints out the zeros and ones
-void stob(char string[2048]) {
+unsigned char *stob(char string[2048], unsigned char *binary) {
 
     int length;
     for (length = 0; string[length] != 0; length++) {}
@@ -29,13 +29,6 @@ void stob(char string[2048]) {
     unsigned char arr[length * 8];
     size_t index;
 
-    char firstFragment[16] = "%.";
-    char secondFragment[8];
-    char thirdFragment[2] = "s";
-
-    itoa(length * 8, secondFragment, 10);
-    strcat(firstFragment, secondFragment);
-    strcat(firstFragment, thirdFragment);
-
-    printf(firstFragment, stringToBin(string, arr, &index, length));
+    memcpy(binary, stringToBin(string, arr, &index, length), length * 8);
+    return binary;
 }
