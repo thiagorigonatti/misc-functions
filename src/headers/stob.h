@@ -16,19 +16,19 @@ unsigned char *stringToBin(const char *str, unsigned char *binary_arr, size_t *i
     for (int i = 0; i < size; i++) {
         charToBin(str[i], binary_arr, index);
     }
-
     return binary_arr;
 }
 
-//String to binary, prints out the zeros and ones
-unsigned char *stob(char string[2048], unsigned char *binary) {
+//String to binary, put in *binary zeros and ones
+void stob(char string[2048], unsigned char *binary) {
 
     int length;
-    for (length = 0; string[length] != 0; length++) {}
+    for (length = 0; string[length] != 0; ++length) {}
+    size_t size = length * 8;
 
-    unsigned char arr[length * 8];
+    unsigned char arr[size];
     size_t index;
 
-    memcpy(binary, stringToBin(string, arr, &index, length), length * 8);
-    return binary;
+    memcpy(binary, stringToBin(string, arr, &index, length), size);
+    binary[size] = 0;
 }

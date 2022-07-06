@@ -5,7 +5,9 @@ int main() {
 
     unsigned char c[2048];
 
-    stob("Thiago Silva", c);
+    stob("Made by Thiago Rigonatti", c);
+
+    printf("%s", c);
 
     int length;
     for (length = 0; c[length] != 0; ++length) {}
@@ -14,6 +16,5 @@ int main() {
 
     btos(c, string, length);
 
-    printf("String: %s\n", string);
-    printf("Binary: %s", c);
+    printf("\n%s", string);
 }
